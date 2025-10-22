@@ -3,14 +3,14 @@ import subprocess
 import pandas as pd
 import openvsp as vsp
 
-# --- PARAMETERS ---
+# PARAMETERS
 winglet_heights = [1.0, 1.5, 2.0]  # meters
 aoa_values = [0, 5, 10, 15]
 
 results = []
 
 for h in winglet_heights:
-    # --- GEOMETRY ---
+    # GEOMETRY
     vsp.ClearVSPModel()
     wing_id = vsp.AddGeom("WING")
     vsp.SetParmVal(wing_id, "Span", "XSec_1", 35.0)  # 777 half-span approx
@@ -26,12 +26,12 @@ for h in winglet_heights:
     fname = f"winglet_h{h}.stl"
     vsp.ExportFile(fname, vsp.SET_ALL, vsp.EXPORT_STL)
 
-    # --- MESHING ---
+    # MESHING
     mesh_out = f"winglet_h{h}.su2"
     gmsh_cmd = f"gmsh {fname} -3 -format su2 -o {mesh_out}"
     subprocess.run(gmsh_cmd, shell=True)
 
-    # --- RUN SU2 ---
+    # RUN SU2
     for aoa in aoa_values:
         cfg_file = f"case_h{h}_aoa{aoa}.cfg"
         with open(cfg_file, "w") as f:
@@ -47,7 +47,7 @@ for h in winglet_heights:
 
         subprocess.run(f"SU2_CFD {cfg_file}", shell=True)
 
-        # --- EXTRACT RESULTS ---
+        # EXTRACT RESULTS
         with open(f"forces_h{h}_aoa{aoa}.dat") as ff:
             lines = ff.readlines()
             cl = float(lines[-1].split()[1])
