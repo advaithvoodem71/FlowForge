@@ -98,9 +98,7 @@ def write_ascii_stl(filename, triangles, name="winglet_model"):
             f.write("  endfacet\n")
         f.write(f"endsolid {name}\n")
 
-# -------------------------
 # Wing lofting functions
-# -------------------------
 
 def loft_sections_to_mesh(sections):
     """
@@ -142,9 +140,7 @@ def loft_sections_to_mesh(sections):
             triangles.extend(quad_to_tris(v00, v10, v11, v01))
     return triangles
 
-# -------------------------
 # Wing & winglet assembly
-# -------------------------
 
 def build_base_wing(span=20.0, root_chord=3.5, tip_chord=1.0, n_span_sections=6, airfoil_thickness=0.12, n_af_points=48):
     """
@@ -308,9 +304,7 @@ def attach_winglet_sections(wing_sections, winglet_params, category):
 
     return sections
 
-# -------------------------
 # Variant generation
-# -------------------------
 
 def generate_variants_and_write():
     # base parameters
