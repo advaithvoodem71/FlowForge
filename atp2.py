@@ -324,47 +324,60 @@ def generate_variants_and_write():
     for cat in categories:
         # define param ranges tuned per category
         if cat == "traditional":
-            spans = [1.6, 2.0, 2.6]          # m
-            chord_scales = [0.35, 0.45]
+            spans = [1.176, 1.20, 1.224]        # base 1.20 ±2%
+            chord_scales = [0.686, 0.70, 0.714] # base 0.70 ±2%
             cants = [70, 75, 82]
             sweeps = [10, 20]
+
         elif cat == "blended":
-            spans = [2.0, 2.6]
-            chord_scales = [0.4, 0.55]
+            spans = [1.372, 1.40, 1.428]        # base 1.40 ±2%
+            chord_scales = [0.637, 0.65, 0.663] # base 0.65 ±2%
             cants = [68, 75]
             sweeps = [5, 18]
+
         elif cat == "wingtip_fence":
-            spans = [0.8, 1.2]
-            chord_scales = [0.15]
+            spans = [0.735, 0.75, 0.765]        # base 0.75 ±2%
+            chord_scales = [0.49, 0.50, 0.51]   # base 0.50 ±2%
             cants = [90]
             sweeps = [0]
+
         elif cat == "sharklet":
-            spans = [2.0, 2.4]
-            chord_scales = [0.3, 0.4]
+            spans = [1.568, 1.0, 1.02]        # base 1.60 ±2%
+            chord_scales = [0.608, 0.62, 0.632] # base 0.62 ±2%
             cants = [78, 85]
             sweeps = [18, 28]
+
         elif cat == "split_scimitar":
-            spans = [2.2, 2.8]
-            chord_scales = [0.25, 0.35]
-            cants = [78, 83]
-            sweeps = [15, 25]
+            spans = [1.88, 1.0, 1.02]          # almost identical for subtle variants
+            chord_scales = [0.56, 0.58, 0.60]   # slightly thicker
+            cants = [78, 80, 83]
+            sweeps = [15, 20, 25]
+            blend_radius = 0.2   
+
         elif cat == "raked":
-            spans = [3.2, 3.8]
-            chord_scales = [0.5, 0.7]
+            spans = [2.548, 2.0, 2.04]        # base 2.60 ±2%
+            chord_scales = [0.716, 0.73, 0.744] # base 0.73 ±2%
             cants = [15, 28]
             sweeps = [30, 45]
+
         elif cat == "spiroid":
-            spans = [2.6, 3.2]
-            chord_scales = [0.12]
+            spans = [1.96, 1.0, 1.02]          # base 2.00 ±2%
+            chord_scales = [0.568, 0.58, 0.592] # base 0.58 ±2%
             cants = [100, 180]
             sweeps = [0]
+
         elif cat == "wing_grid":
-            spans = [1.6, 2.2]
-            chord_scales = [0.2]
+            spans = [1.372, 1.0, 1.02]        # base 1.40 ±2%
+            chord_scales = [0.608, 0.62, 0.632] # base 0.62 ±2%
             cants = [90]
             sweeps = [0]
+
         else:
-            spans = [2.0]; chord_scales=[0.4]; cants=[75]; sweeps=[20]
+            spans = [1.176, 1.20, 1.224]
+            chord_scales = [0.686, 0.70, 0.714]
+            cants = [75]
+            sweeps = [20]
+
 
         # iterate small grid and make files
         for span in spans:
