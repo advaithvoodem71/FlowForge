@@ -36,7 +36,7 @@ Things that may still need improvement
 
 MIT License
 
-Copyright (c) 2025 Advaith Reddy Voodem
+Copyright (c) 2025 advaithvoodem71
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
